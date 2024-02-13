@@ -2,6 +2,7 @@ package dam1.programacion.tema06.ejercicios_arrays;
 
 import static dam1.programacion.tema06.ejercicios_arrays.Ejercicios_Arrays.utils.kbd;
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Ejercicios_Arrays {
             return entradaTeclado;
         }
     }
+    private static final Random rnd = new Random();
 
     public static void main(String[] args) {
         /**
@@ -29,6 +31,40 @@ public class Ejercicios_Arrays {
          * - Iguales a la media</pre>
          */
         System.out.println("----Ejercicio 01----");
+        int[] primerArray = new int[20];
+        double media;
+        int suma = 0;
+        int superiores = 0;
+        int inferiores = 0;
+        int iguales = 0;
+
+        for (int i = 0; i < primerArray.length; i++) {
+            int aleatorio = rnd.nextInt(1000);
+            primerArray[i] = aleatorio;
+            suma += primerArray[i];
+        }
+        media = (double) suma / primerArray.length;
+
+        for (int i : primerArray) {
+            if (i > media) {
+                superiores++;
+            } else if (i < media) {
+                inferiores++;
+            } else {
+                iguales++;
+            }
+
+        }
+
+        for (int num : primerArray) {
+            System.out.println(num);
+        }
+
+        System.out.println("\nLa suma de los numeros es: " + suma);
+        System.out.println("La media de estos numeros es: " + media);
+        System.out.println("Hay " + superiores + " números superiores a la media.");
+        System.out.println("Hay " + inferiores + " números inferiores a la media.");
+        System.out.println("Hay " + iguales + " números iguales a la media.");
 
         /**
          * 2. Crear dos vectores de dimensión 10 con números enteros aleatorios
@@ -97,16 +133,16 @@ public class Ejercicios_Arrays {
          * cada alumno/a) y 5 columnas (una para cada asignatura).
          *
          * Se debe de crear la matriz del tamaño adecuado con valores iniciales de 0.
-         * 
+         *
          * Posteriormente se irá pidiendo al usuario por teclado que nota quiere
          * actualizar y de qué alumno.
-         * 
+         *
          * Es decir:
          *
          * Indícame el alumno (1-10): 5;
          * Indícame la asignatura (1-5): 3;
          * Indícame la nota: 5,6
-         * 
+         *
          * Se deberá guardar en la fila y la columna correspondiente la nota 5,6.
          * Después de cada cambio se imprimirá por pantalla la matriz completa.</pre>
          */
