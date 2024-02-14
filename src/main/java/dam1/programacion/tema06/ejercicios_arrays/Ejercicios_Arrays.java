@@ -72,6 +72,29 @@ public class Ejercicios_Arrays {
          * imprimirlo, cuyos componentes sean la suma de los dos anteriores.
          */
         System.out.println("\n----Ejercicio 02----");
+        int[] vector1 = new int[10];
+        int[] vector2 = new int[10];
+        int[] vector3 = new int[10];
+
+        for (int i = 0; i < 10; i++) {
+            vector1[i] = rnd.nextInt(1, 11);//usando clase Random
+//            vector2[i] = (int)(Math.random()*10);//usando metodo estático del paquete por defecto lang
+        }
+        /**
+         * <pre>Utiliza el método ints() de la clase Random, que devuelve un IntStream.
+         * Normalmente, necesitaríamos importar java.util.stream.IntStream para trabajar con IntStreams,
+         * pero en este caso, como el método ints() ya devuelve un IntStream, no necesitamos importarlo.
+         * Un IntStream es un "stream de numeros enteros" o "flujo de numeros enteros".</pre>
+         */
+        vector2 = new Random().ints(10, 1, 10).toArray();//ints(long streamSize, int randomNumberOrigin, int randomNumberBound)
+        
+        for (int i = 0; i < 10; i++) {
+            vector3[i]= vector1[i]+vector2[i];
+        }
+        System.out.println("V1   V2   V3");
+        for (int i = 0; i < 10; i++) {
+            System.out.printf("%02d + %02d = %02d\n", vector1[i], vector2[i], vector3[i]);
+        }
 
         /**
          * 3. Leer un vector de 10 componentes y calcular el más grande y el más
