@@ -1,6 +1,7 @@
 package dam1.programacion.tema06.ejercicios_arrays;
 
 import static dam1.programacion.tema06.ejercicios_arrays.Ejercicios_Arrays.utils.kbd;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -87,9 +88,9 @@ public class Ejercicios_Arrays {
          * Un IntStream es un "stream de numeros enteros" o "flujo de numeros enteros".</pre>
          */
         vector2 = new Random().ints(10, 1, 10).toArray();//ints(long streamSize, int randomNumberOrigin, int randomNumberBound)
-        
+
         for (int i = 0; i < 10; i++) {
-            vector3[i]= vector1[i]+vector2[i];
+            vector3[i] = vector1[i] + vector2[i];
         }
         System.out.println("V1   V2   V3");
         for (int i = 0; i < 10; i++) {
@@ -101,7 +102,26 @@ public class Ejercicios_Arrays {
          * pequeño de ellos y los lugares donde se encuentran.
          */
         System.out.println("\n----Ejercicio 03----");
+        Random maxMin = new Random();
+        int[] maxMinArray = maxMin.ints(10, 0, 100).toArray();
+        System.out.println(Arrays.toString(maxMinArray));
+        int maxNum = maxMinArray[0];
+        int minNum = maxMinArray[0];
+        int maxPos = 0;
+        int minPos = 0;
 
+        for (int i = 0; i < maxMinArray.length; i++) {
+            if (maxMinArray[i] > maxNum) {
+                maxNum = maxMinArray[i];
+                maxPos = i;
+            }
+            if (maxMinArray[i] < minNum) {
+                minNum = maxMinArray[i];
+                minPos = i;
+            }
+        }
+        System.out.println("El valor máximo encontrado es el: " + maxNum + " y se encuentra en la posición: " + maxPos + ".");
+        System.out.println("El valor mínimo encontrado es el: " + minNum + " y se encuentra en la posición: " + minPos + ".");
         /**
          * 3.1 Generar dos vectores de dimensión 10 (dar valores aleatorios
          * entre 1 y 5)
