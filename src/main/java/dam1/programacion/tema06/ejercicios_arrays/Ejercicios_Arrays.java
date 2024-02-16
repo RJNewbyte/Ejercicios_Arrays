@@ -139,13 +139,60 @@ public class Ejercicios_Arrays {
          *                       elemento 3: 0 veces
          * </pre>
          */
+
         System.out.println("\n----Ejercicio 03.1----");
+        int[] vector1cinco = rnd.ints(10, 1, 6).toArray();
+        int[] vector2cinco = rnd.ints(10, 1, 6).toArray();
+
+        System.out.println("Este es el primer vector: " + Arrays.toString(vector1cinco));
+        System.out.println("Este es el segundo vector: " + Arrays.toString(vector2cinco));
+        System.out.println("A continuación listamos el número de ocurrencias en el segundo"
+                + "\nvector para cada elemento del primero:\n");
+        int contador = 0;
+        for (int i = 0; i < vector1cinco.length; i++) {
+
+            for (int j : vector2cinco) {
+
+                if (vector1cinco[i] == j) {
+                    contador++;
+                }
+            }
+            System.out.println("elemento " + i + " : " + contador + " veces");
+            contador = 0;//limpiamos el contador
+
+        }
 
         /**
          * 4. Generar una matriz de 4 filas y 5 columnas con números aleatorios
          * entre 1 y 100, e imprimirla.
          */
         System.out.println("\n----Ejercicio 04----");
+
+        //GENERACION USANDO un bucle normal y sin Random
+//        int[][] matriz5Cuatro = new int[5][4];
+//
+//        for (int i = 0; i < matriz5Cuatro.length; i++) {
+//            for (int j = 0; j < matriz5Cuatro[i].length; j++) { //matriz5Cuatro[i].length el numero de elementos de una fila con las columnas :)
+//                matriz5Cuatro[i][j] = (int) (Math.random() * 100) + 1;
+//            }
+//        }
+        //GENERACION USANDO expresión lambda y Random
+        int[][] matriz5cuatro = new int[5][];
+        Arrays.setAll(matriz5cuatro, i -> rnd.ints(4, 1, 101).toArray());//la dimension en nuemro de filas ya esta definido en 5, aqui trabajamos con cada vector.
+
+        //PRESENTACION USANDO deepToString podemos sacar una cadena con todos los elementos de la Matriz (muy feo)
+        //System.out.println(Arrays.deepToString(matriz5cuatro));
+        //PRESENTACION USANDO un bucle anidado con printf para mejorar el formato y la justificación
+        for (int[] fila : matriz5cuatro) {
+            for (int num : fila) {
+                System.out.printf("%3d ", num);//introduce espacios en blanco a la izquierda hatsa una longitud de 3 digitos.
+            }
+            System.out.println();
+        }
+//        //PRESENTACION USANDO Arrays.toString en un bucle for-each conseguimos lo mismo, con buen formato y menos lineas, pero sin las columnas justificadas.
+//        for (int[] is : matriz5cuatro) {
+//            System.out.println(Arrays.toString(is));
+//        }
 
         /**
          * 5. Generar una matriz de 10x10 y hallar e imprimir la suma de cada
