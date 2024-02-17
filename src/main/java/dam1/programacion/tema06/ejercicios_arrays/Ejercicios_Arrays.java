@@ -334,7 +334,50 @@ public class Ejercicios_Arrays {
          * Se deberá guardar en la fila y la columna correspondiente la nota 5,6.
          * Después de cada cambio se imprimirá por pantalla la matriz completa.</pre>
          */
-        System.out.println("\n----Ejercicio 08----");
+        System.out.println("\n----Ejercicio 08----\n");
+
+        //Creamos la matriz 10x5
+        double[][] matriz10cinco = new double[10][5];
+        for (double[] ds : matriz10cinco) {
+            Arrays.fill(ds, 0);
+        }
+        
+        //sacamos por pantalla la matriz rellena con 0
+         for (double[] ds : matriz10cinco) {
+            for (double d : ds) {
+                        if (d == 0) {
+            System.out.printf("%.0f ", d);
+        } else {
+            System.out.printf("%05.2f ", d);
+        }
+            }
+            System.out.println("");
+        }
+
+        //Pedimos el alumno
+        System.out.println("\nIndícame el alumno (1-10):");
+        int alumno = kbd().nextInt();
+        kbd().nextLine();//clear buffer
+
+        //Pedimos la asignatura
+        System.out.println("Indícame la asignatura (1-5):");
+        int asignatura = kbd().nextInt();
+        kbd().nextLine();//clear buffer
+
+        //Pedimos la nota
+        System.out.println("Indícame la nota:");
+        double nota = kbd().nextDouble();
+        kbd().nextLine();//clear buffer
+
+        matriz10cinco[alumno][asignatura] = nota;
+        
+        //sacamos por pantalla la matriz catualizada con el nuevo valor
+        for (double[] ds : matriz10cinco) {
+            for (double d : ds) {
+                System.out.printf("%05.2f ", d);
+            }
+            System.out.println("");
+        }
 
     }
 }
