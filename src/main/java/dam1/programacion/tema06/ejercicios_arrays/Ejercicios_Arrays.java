@@ -185,7 +185,7 @@ public class Ejercicios_Arrays {
         //PRESENTACION USANDO un bucle anidado con printf para mejorar el formato y la justificación
         for (int[] fila : matriz5cuatro) {
             for (int num : fila) {
-                System.out.printf("%3d ", num);//introduce espacios en blanco a la izquierda hatsa una longitud de 3 digitos.
+                System.out.printf("%3d", num);//introduce espacios en blanco a la izquierda hatsa una longitud de 3 digitos.
             }
             System.out.println();
         }
@@ -200,12 +200,57 @@ public class Ejercicios_Arrays {
          */
         System.out.println("\n----Ejercicio 05----");
 
+        int[][] matriz10diez = new int[10][];
+        Arrays.setAll(matriz10diez, i -> rnd.ints(10, 1, 11).toArray());
+        System.out.println("Matriz 10x10:");
+        for (int[] is : matriz10diez) {
+            for (int i : is) {
+                System.out.printf("%3d", i);
+            }
+            System.out.println("");
+        }
+
+        int[] sumaFilas = new int[10];
+
+        for (int i = 0; i < matriz10diez.length; i++) {
+            int sumaFila = 0;
+            for (int j = 0; j < matriz10diez[i].length; j++) {
+                sumaFila += matriz10diez[i][j];
+            }
+            sumaFilas[i] = sumaFila;
+        }
+
+        int[] sumaColumnas = new int[10];
+
+        for (int j = 0; j < matriz10diez[0].length; j++) {
+            int sumaColumna = 0;
+            for (int i = 0; i < matriz10diez.length; i++) {
+                sumaColumna += matriz10diez[i][j];
+            }
+            sumaColumnas[j] = sumaColumna;
+        }
+
+        System.out.println("\nLa suma de cada fila es: " + Arrays.toString(sumaFilas));
+        System.out.println("\nLa suma de cada columna es: " + Arrays.toString(sumaColumnas));
+
         /**
          * 6. Generar una matriz de 5x5 (numérica entera) e imprimir el valor
          * más grande y el más pequeño y los lugares donde se encuentran (índice
          * i e índice j).
          */
         System.out.println("\n----Ejercicio 06----");
+        int[][] matriz5cinco = new int[5][];//creamos la matriz
+        Arrays.setAll(matriz5cinco, i -> rnd.ints(5, 1, 11).toArray());//rellenamos ala matriz de numeros enteros aleatorios
+        System.out.println("La matriz 5x5 es:\n");//imprimimos la matriz por pantalla
+        for (int[] fila : matriz5cinco) {
+            for (int col : fila) {
+                System.out.printf("%3d", col);;
+            }
+            System.out.println("");
+        }
+        
+        System.out.println("El numero más grande de la matriz es: " + " y está en la posición: ");
+        System.out.println("El numero más pequeño de la matriz es: " + " y está en la posición: ");
 
         /**
          * 7. Generar una matriz de 5x5 numérica entera, a continuación pedir
