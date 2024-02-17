@@ -238,8 +238,11 @@ public class Ejercicios_Arrays {
          * más grande y el más pequeño y los lugares donde se encuentran (índice
          * i e índice j).
          */
+        //PREGUNTAR POR EL CASO DE QUE SE REPITAN EL VALOR MAXIMO O MINIMO
         System.out.println("\n----Ejercicio 06----");
+
         int[][] matriz5cinco = new int[5][];//creamos la matriz
+
         Arrays.setAll(matriz5cinco, i -> rnd.ints(5, 1, 11).toArray());//rellenamos ala matriz de numeros enteros aleatorios
         System.out.println("La matriz 5x5 es:\n");//imprimimos la matriz por pantalla
         for (int[] fila : matriz5cinco) {
@@ -248,9 +251,25 @@ public class Ejercicios_Arrays {
             }
             System.out.println("");
         }
-        
-        System.out.println("El numero más grande de la matriz es: " + " y está en la posición: ");
-        System.out.println("El numero más pequeño de la matriz es: " + " y está en la posición: ");
+
+        int numMax = 0;// podriamos usar Integer.MIN_VALUE en lugar de 0 para asegurar cualquier rango de numeros
+        int numMin = 0;// podriamos usar Integer.MAX_VALUE en lugar de 0 para asegurar cualquier rango de numeros
+        int[] posMax = new int[2];
+        int[] posMin = new int[2];
+
+        for (int i = 0; i < matriz5cinco.length; i++) {
+            for (int j = 0; j < matriz5cinco[i].length; j++) {
+                if (matriz5cinco[i][j] > numMax) {
+                    numMax = matriz5cinco[i][j];
+                    posMax[0] = i;
+                    posMax[1] = j;
+
+                }
+            }
+        }
+
+        System.out.println("El numero más grande de la matriz es: " + numMax + " y está en la posición: " + Arrays.toString(posMax));
+        System.out.println("El numero más pequeño de la matriz es: " + numMin + " y está en la posición: " + Arrays.toString(posMin));
 
         /**
          * 7. Generar una matriz de 5x5 numérica entera, a continuación pedir
