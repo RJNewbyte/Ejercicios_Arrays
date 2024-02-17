@@ -243,11 +243,11 @@ public class Ejercicios_Arrays {
 
         int[][] matriz5cinco = new int[5][];//creamos la matriz
 
-        Arrays.setAll(matriz5cinco, i -> rnd.ints(5, 1, 11).toArray());//rellenamos ala matriz de numeros enteros aleatorios
+        Arrays.setAll(matriz5cinco, i -> rnd.ints(5, 1, 101).toArray());//rellenamos ala matriz de numeros enteros aleatorios
         System.out.println("La matriz 5x5 es:\n");//imprimimos la matriz por pantalla
         for (int[] fila : matriz5cinco) {
             for (int col : fila) {
-                System.out.printf("%3d", col);;
+                System.out.printf("%3d ", col);;
             }
             System.out.println("");
         }
@@ -277,7 +277,41 @@ public class Ejercicios_Arrays {
          * ambas filas. Presentar las matrices antes y después del cambio.
          */
         System.out.println("\n----Ejercicio 07----");
+        //usamos la matriz5cinco generada en el ejercicio 6
 
+        //mostramos la matriz por pantalla
+        for (int[] fila : matriz5cinco) {
+            for (int col : fila) {
+                System.out.printf("%3d ", col);;
+            }
+            System.out.println("");
+        }
+
+        //obtenemos los numeros de fila a intercambiar
+        System.out.println("\nA continuación vamos a intercambiar dos filas de posición");
+        System.out.println("Introduce el numero (1-5) de la primera fila:");
+        int fila1 = kbd().nextInt();
+        kbd().nextLine();//clear buffer
+
+        System.out.println("Introduce el numero (1-5) de la segunda fila:");
+        int fila2 = kbd().nextInt();
+        kbd().nextLine();//clear buffer
+
+        //Creamos dos arrays para almacenar los valores de las filas seleccionadas
+        int[] fila1Array = Arrays.copyOf(matriz5cinco[fila1 - 1], matriz5cinco[fila1 - 1].length);
+        int[] fila2Array = Arrays.copyOf(matriz5cinco[fila2 - 1], matriz5cinco[fila2 - 1].length);
+
+        // Intercambiamos las filas
+        matriz5cinco[fila1 - 1] = fila2Array;
+        matriz5cinco[fila2 - 1] = fila1Array;
+
+        //devolvemos la matriz resultante por pantalla
+        for (int[] fila : matriz5cinco) {
+            for (int col : fila) {
+                System.out.printf("%3d ", col);;
+            }
+            System.out.println("");
+        }
         /**
          * 8.
          * <pre>Queremos almacenar las notas (podrán serán número decimales) de 10
